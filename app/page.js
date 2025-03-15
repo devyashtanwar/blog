@@ -1,11 +1,12 @@
+'use client'
 import Header from "./components/header";
-import BlogItem from "./components/blog-item.jsx";
+import BlogList from "./components/blog-list";
 
 export default function Home() {
   return (
       <>
         <Header />
-        <BlogItem />
+        <BlogList />
       </>
   );
 }
