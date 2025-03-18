@@ -1,6 +1,6 @@
 import React from "react";
 
-const SubscriptionTableItem = ({ email, mongoID, date }) => {
+const SubscriptionTableItem = ({ email, mongoID, date, deleteEmail }) => {
   const emailDate = new Date(date);
 
   return (
@@ -12,7 +12,12 @@ const SubscriptionTableItem = ({ email, mongoID, date }) => {
         {email ? email : "No Email"}
       </th>
       <td className="px-6 py-4 hidden sm:block">{emailDate.toDateString()}</td>
-      <td className="px-6 py-4 cursor-pointer">x</td>
+      <td
+        onClick={() => deleteEmail(mongoID)}
+        className="px-6 py-4 cursor-pointer"
+      >
+        x
+      </td>
     </tr>
   );
 };

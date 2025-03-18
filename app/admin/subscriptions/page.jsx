@@ -2,6 +2,7 @@
 import SubscriptionTableItem from "@/app/components/admin-components/subscriptions-table-item";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Subscriptions = () => {
   const [emails, setEmails] = useState([]);
@@ -9,6 +10,18 @@ const Subscriptions = () => {
   const fetchEmails = async () => {
     const response = await axios.get("/api/email");
     setEmails(response.data.emails);
+  };
+
+  const deleteEmail = async (mongoID) => {
+    const response = await axios.delete("/api/email", {
+      params: {
+        id: mongoID,
+      },
+    });
+    if (response.data.success) {
+      toast.success(response.data.msg);
+      fetchEmails();
+    } else toast.error("Error deleting the email.");
   };
 
   useEffect(() => {
@@ -41,6 +54,7 @@ const Subscriptions = () => {
                   mongoID={item._id}
                   email={item.email}
                   date={item.date}
+                  deleteEmail={deleteEmail}
                 />
               );
             })}
