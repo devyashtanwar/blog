@@ -20,3 +20,12 @@ export const GET = async (request) => {
   const emails = await EmailModel.find({});
   return NextResponse.json({ emails });
 };
+
+export const DELETE = async (request) => {
+  const id = await request.nextUrl.searchParams.get("id");
+  await EmailModel.findByIdAndDelete(id);
+  return NextResponse.json({
+    success: true,
+    msg: "Email deleted successfully.",
+  });
+};
