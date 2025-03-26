@@ -1,0 +1,8 @@
+{
+  "name": "blog",
+  "compatibility_date": "2025-03-26",
+  "main": "app/page.js",
+  "assets": {
+    "directory": "./assets"
+  }
+}
