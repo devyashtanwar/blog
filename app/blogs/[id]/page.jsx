@@ -30,7 +30,7 @@ const Page = ({ params }) => {
           <Link href="/">
             <Image
               src={assets.logo}
-              width={180}
+              width={100}
               alt=""
               className="w-[130px] sm:w-auto"
             />{" "}
