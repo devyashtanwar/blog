@@ -4,5 +4,14 @@
   "main": "app/page.js",
   "assets": {
     "directory": "./assets"
-  }
+  },
+  "rules": [
+    {
+      "type": "Data",
+      "globs": [
+        "**/*.png"
+      ],
+      "fallthrough": true
+    }
+  ]
 }
