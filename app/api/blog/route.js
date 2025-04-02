@@ -25,21 +25,13 @@ export const GET = async (request) => {
 // API endpoint for uploading new blogs
 export const POST = async (request) => {
   const formData = await request.formData();
-  const timestamp = Date.now();
-
-  const image = formData.get("image");
-  const imageByteData = await image.arrayBuffer();
-  const buffer = Buffer.from(imageByteData);
-  const path = `./public/${timestamp}_${image.name}`;
-  await writeFile(path, buffer);
-  const imgUrl = `/${timestamp}_${image.name}`;
 
   const blogData = {
     title: `${formData.get("title")}`,
     description: `${formData.get("description")}`,
     category: `${formData.get("category")}`,
     author: `${formData.get("author")}`,
-    image: `${imgUrl}`,
+    image: `${formData.get("image")}`,
     authorImg: `${formData.get("authorImg")}`,
   };
 
