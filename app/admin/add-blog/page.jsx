@@ -25,6 +25,25 @@ const AddBlog = () => {
     console.log(data);
   };
 
+  const onUpload = async (element) => {
+    if (
+      element.type === "image/png" ||
+      element.type === "image/jpeg" ||
+      element.type === "image/jpg"
+    ) {
+      const data = new FormData();
+      data.append("file", element);
+      data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
+      data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
+      const res = await fetch(process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL, {
+        method: "POST",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => setImage(data.url.toString()));
+    }
+  };
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -58,14 +77,15 @@ const AddBlog = () => {
         <label htmlFor="image">
           <Image
             className="mt-4"
-            src={!image ? assets.upload_area : URL.createObjectURL(image)}
+            src={!image ? assets.upload_area : image}
+            unoptimized
             width={140}
             height={20}
             alt=""
           />
         </label>
         <input
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => onUpload(e.target.files[0])}
           type="file"
           id="image"
           hidden
