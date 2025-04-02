@@ -58,6 +58,7 @@ const Page = ({ params }) => {
       <div className="mx-5 max-w-[800px] md:mx-auto mt-[-100px] mb-10">
         <Image
           src={data.image}
+          unoptimized
           width={1920}
           height={1080}
           alt=""

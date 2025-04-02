@@ -8,6 +8,7 @@ const BlogList = () => {
 
   const fetchBlogs = async () => {
     const response = await axios.get("/api/blog");
+    console.log(response.data.blogs);
     setBlogs(response.data.blogs);
   };
 

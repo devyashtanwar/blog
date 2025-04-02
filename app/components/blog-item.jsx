@@ -9,6 +9,7 @@ const BlogItem = ({ title, description, category, image, id }) => {
       <Link href={`/blogs/${id}`}>
         <Image
           src={image}
+          unoptimized
           alt=""
           width={400}
           height={400}
