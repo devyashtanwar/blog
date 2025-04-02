@@ -33,9 +33,9 @@ const AddBlog = () => {
     ) {
       const data = new FormData();
       data.append("file", element);
-      data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
-      data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
-      const res = await fetch(process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL, {
+      data.append("upload_preset", process.env.CLOUDINARY_PRESET);
+      data.append("cloud_name", process.env.CLOUDINARY_CLOUD_NAME);
+      const res = await fetch(process.env.CLOUDINARY_BASE_URL, {
         method: "POST",
         body: data,
       })
